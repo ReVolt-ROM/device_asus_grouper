@@ -36,8 +36,8 @@ TARGET_ARCH := arm
 TARGET_ARCH_VARIANT := armv7-a-neon
 ARCH_ARM_HAVE_TLS_REGISTER := true
 
-TARGET_KERNEL_SOURCE = kernel/asus/grouper
-TARGET_KERNEL_CONFIG = tegra3_android_defconfig
+TARGET_KERNEL_SOURCE := kernel/asus/grouper
+TARGET_KERNEL_CONFIG := cyanogenmod_grouper_defconfig
 
 TARGET_USERIMAGES_USE_EXT4 := true
 
