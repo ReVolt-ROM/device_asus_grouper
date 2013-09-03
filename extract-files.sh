@@ -1,4 +1,6 @@
-# Copyright (C) 2010 The Android Open Source Project
+#!/bin/bash
+
+# Copyright (C) 2012 The CyanogenMod Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,11 +14,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Asus blob(s) necessary for Grouper hardware
-PRODUCT_PACKAGES := \
-    sensors-config \
-    camera.tegra3 \
-    sensors.grouper \
-    libsensors.lightsensor \
-    libdrmwvmplugin \
-    libwvm
+DEVICE=grouper
+MANUFACTURER=asus
+
+BASE=../../../vendor/$MANUFACTURER/$DEVICE/proprietary
+mkdir -p $BASE
+for FILE in `cat proprietary-blobs.txt | grep -v "^#"`; do
+#    DIR=`dirname $FILE`
+#    if [ ! -d $BASE$DIR ]; then
+#        echo "making $BASE$DIR..."
+#        mkdir -p $BASE$DIR
+#    fi
+    echo Pulling $FILE to $BASE
+#    adb pull $FILE $BASE$FILE
+    adb pull $FILE $BASE/
+done
+
+./setup-makefiles.sh
